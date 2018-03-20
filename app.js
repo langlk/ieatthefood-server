@@ -7,9 +7,15 @@ const YELPKEY = process.env.REACT_APP_YELP_ACCESS_KEY;
 
 const app = express();
 const port = process.env.PORT || 5000;
+// We'll want to make this an env variable so we can change when built for production.
+const clientOrigin = "http://localhost:3000";
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", clientOrigin);
+  next();
+});
 
 app.get('/api/restaurant', (req, res, next) => {
-  console.log("yelpkey is", YELPKEY);
   axios({
     method: 'get',
     url: 'https://api.yelp.com/v3/businesses/search',
