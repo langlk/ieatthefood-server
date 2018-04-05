@@ -1,9 +1,6 @@
 const path = require('path');
 const express = require('express');
-const axios = require('axios');
-
-require('dotenv').load();
-const YELPKEY = process.env.REACT_APP_YELP_ACCESS_KEY;
+const YelpService = require('./yelp-service.js');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -16,27 +13,20 @@ app.use((req, res, next) => {
 });
 
 app.get('/api/restaurant', (req, res, next) => {
-  axios({
-    method: 'get',
-    url: 'https://api.yelp.com/v3/businesses/search',
-    headers: {
-      Authorization: `Bearer ${YELPKEY}`
-    },
-    params: {
-      latitude: req.query.latitude,
-      longitude: req.query.longitude
-    }
-  })
-  .then((response) => {
-    console.log(response.data.businesses);
-    res.send({ restaurant: response.data.businesses[0] });
-  })
-  .catch((error) => {
-    const message = `Yelp Request Failed: ${error.response.status} ${error.response.statusText}`;
+  const params = {
+    latitude: req.query.latitude,
+    longitude: req.query.longitude
+  };
 
-    console.error(message);
-    res.status(503).send({message: message});
-  });
+  YelpService.search(params)
+    .then((response) => {
+      console.log(response);
+      res.send({ restaurant: response });
+    })
+    .catch((error) => {
+      console.error(error.toString());
+      res.status(503).send({message: error.toString()});
+    });
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
