@@ -17,7 +17,7 @@
 
 ## API Endpoints
 
-#### `GET /api/restaurants`
+#### `GET /api/restaurant`
 
 ##### Required Parameters:
 
