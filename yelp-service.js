@@ -14,7 +14,8 @@ class YelpService {
         },
         params: {
           latitude: params.latitude,
-          longitude: params.longitude
+          longitude: params.longitude,
+          term: params.term
         }
       });
       return response.data.businesses.length > 0 ? response.data.businesses[0] : null;
