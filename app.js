@@ -29,4 +29,20 @@ app.get('/api/restaurant', (req, res, next) => {
     });
 });
 
+app.get('/api/reviews', (req, res, next) => {
+  const params = {
+    businessID: req.query.businessID
+  };
+
+  YelpService.review(params)
+    .then((response) => {
+      console.log(response);
+      res.send({ review: response });
+    })
+    .catch((error) => {
+      console.error(error.toString());
+      res.status(503).send({message: error.toString()});
+    });
+});
+
 app.listen(port, () => console.log(`Listening on port ${port}`));
