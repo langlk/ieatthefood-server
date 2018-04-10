@@ -24,6 +24,10 @@
 * `latitude`
 * `longitude`
 
+##### Optional Parameters:
+
+* `extravagant`: Boolean, defaults to false. When true, price limit on restaurants is removed.
+
 ##### Response:
 
 _Returns `restaurant`, the first Yelp business search result. If there were no results, restaurant is `null`. Returns `503` if Yelp API call fails._
