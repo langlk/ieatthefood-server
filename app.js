@@ -16,7 +16,8 @@ app.get('/api/restaurant', (req, res, next) => {
   const params = {
     latitude: req.query.latitude,
     longitude: req.query.longitude,
-    term: 'Restaurants'
+    categories: 'restaurants',
+    price: req.query.extravagant ? '1, 2, 3, 4' : '1, 2'
   };
 
   YelpService.search(params)

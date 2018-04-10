@@ -3,6 +3,13 @@ const axios = require('axios');
 require('dotenv').load();
 const YELPKEY = process.env.REACT_APP_YELP_ACCESS_KEY;
 
+const yelpDefaults = {
+  sortBy: "rating",
+  categories: "restaurants",
+  openNow: true,
+  price: "1, 2"
+};
+
 class YelpService {
   static async search(params) {
     try {
@@ -15,7 +22,10 @@ class YelpService {
         params: {
           latitude: params.latitude,
           longitude: params.longitude,
-          term: params.term
+          categories: params.categories || yelpDefaults.categories,
+          sort_by: params.sortBy || yelpDefaults.sortBy,
+          open_now: params.openNow || yelpDefaults.openNow,
+          price: params.price || yelpDefaults.price
         }
       });
       return response.data.businesses.length > 0 ? response.data.businesses[0] : null;
