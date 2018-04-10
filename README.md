@@ -27,6 +27,7 @@
 ##### Optional Parameters:
 
 * `extravagant`: Boolean, defaults to false. When true, price limit on restaurants is removed.
+* `driving`: Boolean, defaults to false. Sets search radius to 1km if false, 10km if true.
 
 ##### Response:
 

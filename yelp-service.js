@@ -7,7 +7,8 @@ const yelpDefaults = {
   sortBy: "rating",
   categories: "restaurants",
   openNow: true,
-  price: "1, 2"
+  price: "1, 2",
+  radius: 1000
 };
 
 class YelpService {
@@ -25,7 +26,8 @@ class YelpService {
           categories: params.categories || yelpDefaults.categories,
           sort_by: params.sortBy || yelpDefaults.sortBy,
           open_now: params.openNow || yelpDefaults.openNow,
-          price: params.price || yelpDefaults.price
+          price: params.price || yelpDefaults.price,
+          radius: params.radius || yelpDefaults.radius
         }
       });
       return response.data.businesses.length > 0 ? response.data.businesses[0] : null;
