@@ -37,10 +37,10 @@ app.get('/api/reviews', (req, res, next) => {
     businessID: req.query.businessID
   };
 
-  YelpService.review(params)
+  YelpService.reviews(params)
     .then((response) => {
       console.log(response);
-      res.send({ review: response });
+      res.send({ reviews: response });
     })
     .catch((error) => {
       console.error(error.toString());

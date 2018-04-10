@@ -36,7 +36,7 @@ class YelpService {
     }
   }
 
-  static async review(params) {
+  static async reviews(params) {
     try {
       let response = await axios({
         method: 'get',
