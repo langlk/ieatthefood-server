@@ -1,0 +1,22 @@
+service: aws-nodejs # NOTE: update this with your service name
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+
+functions:
+  restaurant:
+    handler: handler.restaurant
+    events:
+      - http:
+         path: api/restaurant
+         method: get
+
+  review:
+    handler: handler.review
+    events:
+      - http:
+         path: api/review
+         method: get

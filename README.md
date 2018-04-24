@@ -11,9 +11,10 @@
 
   ```
   yarn
-  nodemon app.js
+  npm install
+  serverless offline start
   ```
-* The API will be available at `localhost:5000`
+* The API will be available at `localhost:3000`
 
 ## API Endpoints
 
