@@ -33,3 +33,13 @@
 ##### Response:
 
 _Returns `restaurant`, the first Yelp business search result. If there were no results, restaurant is `null`. Returns `503` if Yelp API call fails._
+
+#### `GET /api/reviews`
+
+##### Required Parameters:
+
+* `businessID`
+
+##### Response:
+
+_Returns 'reviews', currently the first yelp review based on the businessID supplied. If there were no results, restaurant is `null`. Returns `503` if Yelp API call fails._
